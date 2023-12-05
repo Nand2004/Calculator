@@ -109,16 +109,16 @@ public class calci {
 				while(!history.isEmpty()){ //Empties the stack.
 					history.pop();				
 				}
-				
 				while(!numberArray.isEmpty()){ //Empties the array.
 					numberArray.clear();
-				}
-				
+				}		
 				textField_1.setText(""); //Also clears out the second textField.
 			}
-			
-			
 		});
+		
+		btnClear.setBounds(126, 75, 127, 46);
+		frame.getContentPane().add(btnClear);
+				
 		
 		JButton btnNegative = new JButton("(-)");
 		btnNegative.addActionListener(new ActionListener() {
@@ -136,9 +136,6 @@ public class calci {
 		frame.getContentPane().add(btnNegative);
 	
 		
-		btnClear.setBounds(126, 75, 127, 46);
-		frame.getContentPane().add(btnClear);
-		
 		JButton btn9 = new JButton("9");
 		btn9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
@@ -150,6 +147,7 @@ public class calci {
 		});
 		btn9.setBounds(126, 119, 127, 46);
 		frame.getContentPane().add(btn9);
+		
 		
 		JButton btn6 = new JButton("6");
 		btn6.addActionListener(new ActionListener() {
@@ -570,6 +568,56 @@ public class calci {
 		frame.getContentPane().add(btnExponent);
 		
 		
+		JButton btnAscSort = new JButton("Assending Sort");
+		btnAscSort.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        String[] numbers = textField.getText().split(",");
+		        ArrayList<Double> sortedNumbers = new ArrayList<>();
+
+		        for (String num : numbers) {
+		              sortedNumbers.add(Double.parseDouble(num));
+		        }
+
+		        Collections.sort(sortedNumbers);
+
+		        StringBuilder sortedString = new StringBuilder();
+		        for (Double num : sortedNumbers) {
+		            sortedString.append(num).append(", ");
+		        }
+
+		        textField.setText(sortedString.toString());
+		    }
+		});
+		btnAscSort.setBounds(0,285,313,46);
+		frame.getContentPane().add(btnAscSort);
+		
+		
+		JButton btnDescSort = new JButton("Descending Sort");
+		btnDescSort.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        String[] numbers = textField.getText().split(",");
+		        ArrayList<Double> sortedNumbers = new ArrayList<>();
+
+		        for (String num : numbers) {
+		              sortedNumbers.add(Double.parseDouble(num));
+		        }
+
+		        Collections.sort(sortedNumbers, Collections.reverseOrder());
+
+		        StringBuilder sortedString = new StringBuilder();
+		        for (Double num : sortedNumbers) {
+		            sortedString.append(num).append(", ");
+		        }
+
+		        textField.setText(sortedString.toString());
+		    }
+		});
+		btnDescSort.setBounds(308,285,340,46);
+		frame.getContentPane().add(btnDescSort);
+		
+		
+		
+		
 		textField_1 = new JTextField(); //iniatilization of another textField which will print out the operation sign.
 		textField_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
@@ -581,6 +629,7 @@ public class calci {
 		frame.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
 	}
+	
 
 	public  void clearTextField()
 	{
